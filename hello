@@ -1,0 +1,34 @@
+item asylum script
+-- Variable
+local player = game.Players.LocalPlayer
+
+-- KillAura
+while true do
+    -- Check
+    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character:FindFirstChildOfClass("Tool") and player.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle") then
+        -- Tool
+        local tool = player.Character:FindFirstChildOfClass("Tool")
+        local traps = {}
+        -- Grab
+item asylum script  item asylum script
+        local plrs = game.Players:GetPlayers()
+        for i = 2, #plrs do local v = plrs[i].Character
+            if v and not v:FindFirstChild("ForceField") and v:FindFirstChild("Head") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                table.insert(traps,v)
+            end
+        end
+        -- Sort
+        table.sort(traps,function(a,b)
+            return a.Humanoid.Health < b.Humanoid.Health
+        end)
+item asylum script  item asylum script
+        -- Attack
+        pcall(function()
+            tool:Activate()
+            firetouchinterest(tool.Handle,traps[1].Head,0)
+            firetouchinterest(tool.Handle,traps[1].Head,1)
+        end)
+    end
+    wait()
+end
+item asylum script
